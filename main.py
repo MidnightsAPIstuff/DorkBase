@@ -2,7 +2,7 @@ from funcs.utils import clear_screen
 from funcs.config import (
     BANNER, HELP_TEXT, CREDITS_TEXT,
     C, RR,
-    SQL_DORKS, IP_DORKS
+    SQL_DORKS, LOG_DORKS, IP_DORKS, XSS_DORKS
 )
 from funcs.dorks_menu import dorks_menu
 from funcs.search import search_dork
@@ -35,31 +35,40 @@ def main():
         elif cmd == "-exit":
             break
 
-        elif cmd in ("-sql dorks", "-sqldorks", "-sql"):
+        # ── All categories ───────────────────────────────────────────────
+        elif cmd in ("-sql", "-sql dorks", "-sqldorks"):
             dorks_menu("SQL", SQL_DORKS)
 
-        elif cmd in ("-ip dorks", "-ipdorks", "-ip"):
-            dorks_menu("IP", IP_DORKS)
+        elif cmd in ("-log", "-log dorks", "-logs"):
+            dorks_menu("LOG", LOG_DORKS)
+
+        elif cmd in ("-ip", "-ip dorks", "-ipdorks", "-cams"):
+            dorks_menu("IP/Cams", IP_DORKS)
+
+        elif cmd in ("-xss", "-xss dorks"):
+            dorks_menu("XSS", XSS_DORKS)
 
         elif cmd == "-dorks":
             clear_screen()
             print(f"""
                                    {C}╔═════════════════════════════════════════════════╗{RR}
-                                   {C}║{RR}  Dorks Categories:                              {C}║{RR}
-                                   {C}║{RR}  -sql dorks     -  SQL injection dorks          {C}║{RR}
-                                   {C}║{RR}  -ip dorks      -  IP / camera dorks            {C}║{RR}
-                                   {C}║{RR}  -back          -  return to main               {C}║{RR}
+                                   {C}║{RR}          Available Dork Categories               {C}║{RR}
+                                   {C}║{RR}  -sql / -sql dorks     →  SQL Injection         {C}║{RR}
+                                   {C}║{RR}  -log / -log dorks     →  Logs & Access Logs    {C}║{RR}
+                                   {C}║{RR}  -ip  / -ip dorks      →  Cameras & Devices     {C}║{RR}
+                                   {C}║{RR}  -xss / -xss dorks     →  Cross-Site Scripting   {C}║{RR}
+                                   {C}║{RR}  -back                 →  return to main         {C}║{RR}
                                    {C}╚═════════════════════════════════════════════════╝{RR}
             """)
-            input(f"{C}dorkbase{RR}> ")
-
-        elif cmd:
-            # Allow direct dork search from main prompt
-            search_dork(cmd)
+            input(f"{C}Press enter to continue...{RR}")
 
         else:
-            continue
-
+            if cmd.strip():
+                print(f"{C}Unknown command: '{cmd}'{RR}")
+                print(f"{C}Type -help for available commands{RR}")
+                print(f"{C}To search a custom dork → use one of the category menus (-sql, -log, -ip, -xss){RR}")
+                input(f"{C}Press enter...{RR}")
+            # empty input → just loop
 
 if __name__ == "__main__":
     main()
