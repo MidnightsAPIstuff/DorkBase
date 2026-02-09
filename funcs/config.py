@@ -748,6 +748,16 @@ XSS_DORKS = [
     "inurl:term_id=",
 ]
 
+R = Fore.RED
+G = Fore.GREEN
+B = Fore.BLUE
+Y = Fore.YELLOW
+C = Fore.CYAN
+M = Fore.MAGENTA
+W = Fore.WHITE
+K = Fore.BLACK
+RR = Style.RESET_ALL
+
 
 BANNER = f"""
 {C}                           ▀██▀▀█▄                   ▀██      ▀██▀▀█▄                          
