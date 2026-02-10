@@ -19,7 +19,7 @@
 ## 🛠️ Installation
 
 ### 1. Clone the Repository
-git clone https://github.com/YourUsername/DorkBase.git
+git clone https://github.com/MidnightsAPIstuff/DorkBase.git
 cd DorkBase
 
 ### 2. Run the Setup
@@ -28,7 +28,7 @@ setupOPENFIRST.bat
 
 ### 3. Install Globally
 To use the `dorkbase` command from any directory, run this command in the project folder:
-pip install .
+pip install -e .
 
 ---
 
